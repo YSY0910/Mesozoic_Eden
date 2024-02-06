@@ -4,8 +4,8 @@ public class test3_4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int safetyRating = 95;
-		int safetyThreshold = 70;
+		int safetyRating = 9;
+		int safetyThreshold = 7;
 		
 		if(safetyRating > safetyThreshold) {
 			System.out.println("공원은 매우 안전합니다.");

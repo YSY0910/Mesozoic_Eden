@@ -27,7 +27,13 @@ public class test3_9 {
 				System.out.println("순찰을 시작하세요");
 			}else System.out.println("순찰을 강화하세요");
 			
-			if(10 < time && time < 11) {
+			if(10 < time && time < 19) {
+				System.out.println("순찰을 시작하세요");
+			}else
+				System.out.println("야간 순찰을 시작하세요");
+			break;
+			
+/*			if(10 < time && time < 11) {
 				System.out.println("출입문 관리 및 CCTV 감시");
 			}
 			else if(11 < time && time < 14) {
@@ -40,7 +46,7 @@ public class test3_9 {
 				System.out.println("퇴장 관람객 확인 및 CCTV 감시");
 			}
 			else System.out.println("특이사항 보고 후 퇴근, 당직자는 경비실에서 상황대기");
-			break;
+			break;*/
 			
 		case "청소팀":
 			System.out.println("당신의 임무는 " + role + " 입니다.");

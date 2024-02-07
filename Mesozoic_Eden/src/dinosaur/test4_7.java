@@ -31,14 +31,16 @@ public class test4_7 {
 		if(time == 8 || time == 14 || time == 22) {
 			System.out.println("지금은 " + time + "시 " + "티라노사우루스에게 " + TrexEachfood + "kg만큼 먹이를 줘야 합니다.");
 			}
-		else System.out.println("지금 시간은 티라노의 식사시간이 아닙니다.");
+		else 
+			System.out.println("지금 시간은 티라노의 식사시간이 아닙니다.");
 		break;
 	
 		case "브라키오":
 		if(time == 7 || time == 11 || time == 15 || time == 19) {
 			System.out.println("지금은 " + time + "시 " + "브라키오사우루스에게 " + BrachioEachfood + "kg만큼 먹이를 줘야 합니다.");
 		}
-		else System.out.println("지금 시간은 브라키오의 식사시간이 아닙니다.");
+		else 
+			System.out.println("지금 시간은 브라키오의 식사시간이 아닙니다.");
 		break;
 		
 		default:

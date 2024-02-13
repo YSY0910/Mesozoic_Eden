@@ -1,5 +1,5 @@
 package dinosaur;
-public class Main{
+public class main01{
 	public static void main(String[] args){
 		
 		String name = "윤 선용";

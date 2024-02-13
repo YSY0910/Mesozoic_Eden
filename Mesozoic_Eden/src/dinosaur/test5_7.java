@@ -7,14 +7,12 @@ public class test5_7 {
 		int cols = 5;
 		
 		String[][] Chair = new String[rows][cols];
-		System.out.println("-------버스 좌석 현황-------");
+		System.out.println("--------버스 좌석 현황--------");
 		for(int i = 0; i < Chair.length; i++) {
 			for(int j = 0; j < Chair[i].length; j++) {
 				Chair[i][j] = "O";
-//				if() {
-					
-//				}
-				System.out.print(" " + Chair[i][j] + " ");
+				
+				System.out.print(" " + Chair[i][j] + "    ");
 			}
 			System.out.println("");
 		}

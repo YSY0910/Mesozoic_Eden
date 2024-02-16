@@ -10,7 +10,7 @@ public class test6_7 {
 	int dinoCount = 0;
 	boolean keepMenu = true;
 
-	String[][] parkStaffs = {
+	String[][] parkStaffs = {//이름, 나이, 경력 순
 			{"이스마엘","파우스트","로쟈","오티스","료슈","그레고르"},
 			{"30","28","25","22","35","31"},
 			{"10","8","5","3","7","6"}
@@ -201,6 +201,5 @@ public class test6_7 {
 	
 	public void exitProgram() {
 		System.out.println("프로그램을 종료합니다.");
-		
 	}
 }

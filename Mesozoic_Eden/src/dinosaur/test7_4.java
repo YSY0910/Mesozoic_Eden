@@ -68,12 +68,17 @@ public class test7_4 {
 	public static void main(String[] args) {
 	
 	Enclosure enclosure1 = new Enclosure();
+	Enclosure enclosure2 = new Enclosure();
+	Enclosure enclosure3 = new Enclosure();
+	Enclosure enclosure4 = new Enclosure();
+	Enclosure enclosure5 = new Enclosure();
+	
 	
 	enclosure1.addDinosaur(new Dinosaur("티노", 10, "티노01"));
-	enclosure1.addDinosaur(new Dinosaur("알로", 10, "알로01"));
-	enclosure1.addDinosaur(new Dinosaur("랩터", 10, "랩터01"));
-	enclosure1.addDinosaur(new Dinosaur("키노", 10, "키노01"));
-	enclosure1.addDinosaur(new Dinosaur("주노", 10, "주노01"));
+	enclosure2.addDinosaur(new Dinosaur("알로", 10, "알로01"));
+	enclosure3.addDinosaur(new Dinosaur("랩터", 10, "랩터01"));
+	enclosure4.addDinosaur(new Dinosaur("키노", 10, "키노01"));
+	enclosure5.addDinosaur(new Dinosaur("주노", 10, "주노01"));
 	enclosure1.setSafetyscore(8);
 	enclosure1.displayEnclosureStatus();
 	enclosure1.removeDinosaur("키노");

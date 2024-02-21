@@ -1,5 +1,4 @@
 package pack07;
-
 import java.io.IOException;
 
 class Dog{

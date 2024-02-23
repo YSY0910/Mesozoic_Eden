@@ -38,9 +38,9 @@ public class Main {
 		System.out.println("1. 공룡 관리");
 		System.out.println("2. 직원 관리");
 		System.out.println("3. 티켓 관리");
-		System.out.println("4. 공원 상태 확인");
-		System.out.println("5. 상황 컨트롤");
-		System.out.println("6. 종료");
+		System.out.println("4. 공원 확인");
+		System.out.println("5. 상황 확인");
+		System.out.println("6. 콘솔 종료");
 		System.out.print("번호를 입력하세요: ");
 	}
 	
@@ -150,7 +150,7 @@ public class Main {
 				fireWork();
 			}
 			else if(ans2 == 3) {
-
+				goWork();
 			}
 			else if(ans2 == 8) {
 				alertAlarm();
@@ -633,8 +633,36 @@ public class Main {
 	}
 	
 	public void goWork() {
-		
-	}
+        System.out.println("직원의 이름을 입력해주세요.");
+        String name = sc.next();
+
+        for (ParkStaff staff : parkstaff) {
+            if (staff != null && staff.getName().equals(name)) {
+                if (staff instanceof Security) {
+                	System.out.println("업무를 내려주세요.");
+                	String work = sc.next();
+                	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
+                    // 보안 업무에 관련된 작업 수행 코드 추가
+                } else if (staff instanceof Veterinarians) {
+                	System.out.println("업무를 내려주세요.");
+                	String work = sc.next();
+                	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
+                    // 수의사 업무에 관련된 작업 수행 코드 추가
+                } else if (staff instanceof Guide) {
+                	System.out.println("업무를 내려주세요.");
+                	String work = sc.next();
+                	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
+                    // 안내원 업무에 관련된 작업 수행 코드 추가
+                } else {
+                    System.out.println("해당 직원의 업무가 정의되지 않았습니다.");
+                }
+                return;
+            }
+        }
+
+        System.out.println("해당 이름의 직원이 존재하지 않습니다.");
+    }
+
 	
     public void welcomeVIP() {
     	boolean vipFound = false;

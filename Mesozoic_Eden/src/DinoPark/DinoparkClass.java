@@ -261,3 +261,4 @@ class SafeTest{ // 간단 안전 테스트
 		}else System.out.println("주의가 필요합니다. 안전점검이 필요합니다.");
 	}
 }
+

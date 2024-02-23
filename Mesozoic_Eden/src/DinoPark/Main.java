@@ -632,7 +632,9 @@ public class Main {
 	    }
 	}
 	
-
+	public void goWork() {
+		
+	}
 	
     public void welcomeVIP() {
     	boolean vipFound = false;

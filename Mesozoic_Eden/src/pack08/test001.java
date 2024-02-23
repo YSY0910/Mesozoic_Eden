@@ -19,6 +19,7 @@ class Tuatara extends Vehicle{
 }
 
 public class test001 {
+
 	public static void patternMatchingSwitch(Vehicle v) { // v는 Vehicle의 객체
 		System.out.println(
 		switch(v){
@@ -31,8 +32,31 @@ public class test001 {
 		}
 				);
 	}
-	
+
+	public static void patternMatchinIf(Vehicle v) {
+		if(v instanceof Boat) {
+			System.out.println("It's a Boat");
+		}
+		else if (v instanceof Train) {
+			System.out.println("It's a Train");
+		}
+		else if (v instanceof Car) {
+			Car c = (Car) v;
+			if(c.getNumDoors() == 4) {
+				System.out.println(c.onRoad());
+			}
+			else if(c.getNumDoors() == 2) {
+				System.out.println(c.onRoad());
+			}
+		}
+		else if(v instanceof Tuatara) {
+			Tuatara s = (Tuatara) v;
+			System.out.println(s.onRoad());
+		}
+		else System.out.println("Invaild type");
+	}
 	public static void main(String[]args) {
+		
 		Vehicle a = new Boat();
 		patternMatchingSwitch(a);
 		Vehicle b = new Train();
@@ -43,5 +67,18 @@ public class test001 {
 		patternMatchingSwitch(d);
 		Vehicle e = new Tuatara();
 		patternMatchingSwitch(e);
+		System.out.println();
+		Vehicle f = new Boat();
+		patternMatchinIf(f);
+		Vehicle g = new Train();
+		patternMatchinIf(g);
+		Vehicle h = new Car(4);
+		patternMatchinIf(h);
+		Vehicle i = new Car(2);
+		patternMatchinIf(i);
+		Vehicle j = new Tuatara();
+		patternMatchinIf(j);
+		
+		
 	}
 }

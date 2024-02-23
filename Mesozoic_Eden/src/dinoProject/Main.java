@@ -29,7 +29,7 @@ public class Main{
         employee[3] = new Employee("료슈", 31, "보안팀원", 5);
         
         ticket[0] = new Ticket(15000, "롤랑", 20240219, false);
-        ticket[1] = new Ticket(15000, "안젤리카", 20240219, true);
+        ticket[1] = new Ticket(15000, "안젤리카", 20240219, false);
         ticket[2] = new Ticket(15000, "파피", 20240219, false);
         ticket[3] = new Ticket(15000, "이리스", 20240219, false);
         
@@ -209,7 +209,8 @@ public class Main{
 }
 	
 	public void removeTicket() {
-		System.out.println("삭제할 방문객 이름은? ");
+		System.out.println("삭제할 방문객 이름은"
+				+ "? ");
 		String ans = sc.next();
 		
 		int indexRemove = -1;
@@ -495,23 +496,25 @@ public class Main{
     	
     	for(Ticket tick : ticket) {
     		if(tick != null && tick.getVip()) {
-    			System.out.println("환영합니다, VIP 고객 " + tick.getVisitorName() + "님!");
     			vipFound = true;
+    			System.out.println("환영합니다, VIP 고객 " + tick.getVisitorName() + "님!");
+    			System.out.println();
     		}
     	}
 		if(!vipFound) {
-			System.out.println("VIP 고객이 없습니다.");
+			System.out.println("VIP 고객이 없습니다. 다음에 다시 확인해봅시다.");
 		}
     }
     
-    
-    public void displayAlram(){
+    public void displayAlram(){ // do-while문을 이용해 상황종료가 될 때까지 계속 비상벨 화면을 출력, 공룡 우리에 격벽 작동, 직원은 관람객 대피안내, 고객들은 직원의 안내에 따라 대피
+    	boolean CheckEM = true;
+    	do {
     	System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!비상 상황 발생!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    	System.out.println("비상벨이 눌렸습니다. 공원에 대피령을 발표합니다.");
+    	System.out.println("비상벨이 눌렸습니다. 공원에 대피령을 선언합니다.");
 		for(Dinosaur dino : dinosaur) {
 			if(dino != null) {
 				System.out.println("강화 격벽 폐쇄: " + dino.getName() + "이(가) 있는 우리에 강화 격벽을 작동합니다.");
-
+				
 			}
 		}				System.out.println();
 		for(Employee worker : employee) {
@@ -526,6 +529,17 @@ public class Main{
 
 			}
 		}				System.out.println();
-    	System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!즉시 대피 바람!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    	System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!비상 상황 발생!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    	System.out.println("상황이 종료 되었나요? 네/아니오");
+    	String ans = sc.next();
+    	if(ans.equals("네")) {
+    		CheckEM = false;
+    		System.out.println("상황종료. 비상벨을 종료합니다.");
+    	}
+    	else if(ans.equals("아니오")) {
+    		CheckEM = true;
+    	}
+    	}while (CheckEM);
     }
 }

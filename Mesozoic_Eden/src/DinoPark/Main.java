@@ -128,9 +128,11 @@ public class Main {
 			int ans1 = sc.nextInt();
 			if(ans1 == 1) {
 				System.out.println("간단 테스트를 시작합니다. ");
+				simpleTest();
 				
 			}
 			else if(ans1 == 2) {
+				System.out.println("현재 공룡 우리의 번호입니다.");
 				traceDino();
 			}
 			else {System.out.println("잘못된 입력입니다.");}
@@ -515,7 +517,15 @@ public class Main {
         int ans3 = sc.nextInt();
         sum = ans1 + ans2 + ans3;
         avg = sum / 3.0;
-        
+        if(ans1 < 6) {
+            System.out.println("공룡 우리 상태가 좋지 않습니다. 점검을 제안합니다. 현재 점수 " + ans1);
+        }
+        if(ans2 < 6) {
+            System.out.println("공원 내 질서 상태가 좋지 않습니다. 관람객 질서 유지 요청을 제안합니다. 현재 점수 " + ans2);
+        }
+        if(ans2 < 6) {
+            System.out.println("공룡 시설물 상태가 좋지 않습니다. 시설물 보수를 제안합니다. 현재 점수 " + ans3);
+        }
         System.out.println("평균 점수: " + avg);
         safePark.setSafetyScore(avg);
 	}
@@ -639,17 +649,17 @@ public class Main {
         for (ParkStaff staff : parkstaff) {
             if (staff != null && staff.getName().equals(name)) {
                 if (staff instanceof Security) {
-                	System.out.println("업무를 내려주세요.");
+                	System.out.println(name + "직원 호출 완료, 보안팀 소속 입니다. 명령을 내려주세요.");
                 	String work = sc.next();
                 	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
                     // 보안 업무에 관련된 작업 수행 코드 추가
                 } else if (staff instanceof Veterinarians) {
-                	System.out.println("업무를 내려주세요.");
+                	System.out.println(name + "직원 호출 완료, 수의팀 소속 입니다. 명령을 내려주세요.");
                 	String work = sc.next();
                 	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
                     // 수의사 업무에 관련된 작업 수행 코드 추가
                 } else if (staff instanceof Guide) {
-                	System.out.println("업무를 내려주세요.");
+                	System.out.println(name + "직원 호출 완료, 안내팀 소속 입니다. 명령을 내려주세요.");
                 	String work = sc.next();
                 	System.out.println(name + " 직원은 " + work + " 작업을 시작합니다." );
                     // 안내원 업무에 관련된 작업 수행 코드 추가
@@ -730,6 +740,8 @@ public class Main {
 	    	CheckEM = true;
 	    }
 	    }while (CheckEM);
-	   }
+	}
+	
+
 }
 

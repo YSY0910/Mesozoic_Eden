@@ -1,0 +1,2 @@
+Tyrannosaurus: CarnivoreBrachiosaurus: HerbivoreTriceratops: HerbivoreVelociraptor:
+CarnivoreStegosaurus: HerbivoreSpinosaurus: CarnivoreAnkylosaurus: Herbivore

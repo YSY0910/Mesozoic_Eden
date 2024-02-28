@@ -1,19 +1,14 @@
 package Dinopark;
 
-class Dinosaur{ // 모든 공룡이 있는 우리는 보안등급을 1~3까지 표시할 것.
+//공룡
+class Dinosaur implements eatable{
 	private String name;
 	private int age;
-	private String size;
 	private String species;
-	private String house;
-	private String diet;
-	Dinosaur(String name, int age, String size, String species, String house, String diet){
+	Dinosaur(String name, int age, String species){
 		this.name = name;
 		this.age = age;
-		this.size = size;
 		this.species = species;
-		this.house = house;
-		this.diet = diet;
 	}
 	public String getName(){
 		return name;
@@ -21,17 +16,8 @@ class Dinosaur{ // 모든 공룡이 있는 우리는 보안등급을 1~3까지 �
 	public int getAge() {
 		return age;
 	}
-	public String getSize() {
-		return size;
-	}
 	public String getSpecies(){
 		return species;
-	}
-	public String getHouse(){
-		return house;
-	}
-	public String getDiet(){
-		return diet;
 	}
 	public void setName(String aName) {
 		name = aName;
@@ -39,55 +25,41 @@ class Dinosaur{ // 모든 공룡이 있는 우리는 보안등급을 1~3까지 �
 	public void setAge(int aAge) {
 		age = aAge;
 	}
-	public void setSize(String aSize) {
-		size = aSize;
-	}
 	public void setSpecies(String aSpecies) {
 		species = aSpecies;
 	}
-	public void setHouse(String aHouse) {
-		house = aHouse;
-	}
-	public void setDiet(String aDiet) {
-		diet = aDiet;
-	}
+	String dinoType() {return "뭐";}
+	public void eat() {System.out.println("뭘 먹지");}
 }
-class LandDino extends Dinosaur{
-	private int tailSize;
-	LandDino(String name, int age, String size, String species, String house, String diet, int tailSize){
-		super(name, age, size, species, house, diet);
-		this.tailSize = tailSize;
-	}
-	public int getTailSize() {
-		return tailSize;
-	}
-	public void setTailSize(int aTailSize) {
-		tailSize = aTailSize;
-	}
+
+interface eatable{
+	void eat();
 }
-class FlyDino extends Dinosaur{
-	private int wingSize;
-	FlyDino(String name, int age, String size, String species, String house, String diet, int wingSize){
-		super(name, age, size, species, house, diet);
-		this.wingSize = wingSize;
+
+class CarnivoreDino extends Dinosaur implements eatable{
+	CarnivoreDino(String name, int age, String species){
+		super(name, age, species);
 	}
-	public int getWingSize() {
-		return wingSize;
-	}
-	public void setWingSize(int aWingSize) {
-		wingSize = aWingSize;
-	}
+	String dinoType() {return "육식공룡";}
+	@Override
+	public void eat() {System.out.println("고기를 먹는다.");}
+
 }
-class AquaDino extends Dinosaur{
-	private int finSize;
-	AquaDino(String name, int age, String size, String species, String house, String diet, int finSize){
-		super(name, age, size, species, house, diet);
-		this.finSize = finSize;
+class HerbivorDino extends Dinosaur implements eatable{
+	HerbivorDino(String name, int age, String species){
+		super(name, age, species);
 	}
-	public int getFinSize() {
-		return finSize;
+	String dinoType() {return "초식공룡";}
+	@Override
+	public void eat() {System.out.println("풀을 먹는다.");}
+	
+}
+class AquaDino extends Dinosaur	implements eatable{
+	AquaDino(String name, int age, String species){
+	super(name, age, species);
 	}
-	public void setFinSize(int aFinSize) {
-		finSize = aFinSize;
-	}
+	String dinoType() {return "바다공룡";}
+	@Override
+	public void eat() {System.out.println("물고기를 먹는다.");}
+
 }

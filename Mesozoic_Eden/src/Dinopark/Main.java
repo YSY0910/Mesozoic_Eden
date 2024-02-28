@@ -4,10 +4,9 @@ import java.util.Scanner;
 public class Main {
 	boolean keepMenu = true;
 	Scanner sc = new Scanner(System.in);
-	Dinosaur[] dinosaur = new Dinosaur[10];
-	ParkStaff[] parkstaff = new ParkStaff[10];
-	Ticket[] ticket = new Ticket[10];
-	ParkStaff[] working = new ParkStaff[10];
+	Dinosaur[] dinosaur = new Dinosaur[5];
+	ParkStaff[] parkstaff = new ParkStaff[5];
+	Ticket[] ticket = new Ticket[5];
 	SafeTest safePark = new SafeTest(); //SafeTest라는 클래스를 정의하고 해당 클래스의 객체를 생성하여 safePark라는 변수에 할당.
 	
 	public static void main(String[]args) {
@@ -45,12 +44,11 @@ public class Main {
 	}
 	
 	public void alreadyData() {
-		dinosaur[0] = new LandDino("티노", 15, "큼", "티라노사우루스", "지룡", "육식", 2);
-		dinosaur[1] = new LandDino("알로", 8, "큼", "알로사우루스", "지룡", "육식", 3);
-		dinosaur[2] = new FlyDino("케찰", 15, "중간", "케찰코아틀", "익룡", "잡식", 2);
-		dinosaur[3] = new FlyDino("프테", 25, "작음", "프테라노돈", "익룡", "잡식", 1);
-		dinosaur[4] = new AquaDino("모사", 65, "큼", "모사사우루스", "수룡", "잡식", 2);
-		dinosaur[5] = new AquaDino("모스", 35, "중간", "모스사우루스", "수룡", "잡식", 3);
+		dinosaur[0] = new CarnivoreDino("티노", 15, "티라노사우루스");
+		dinosaur[1] = new CarnivoreDino("알로", 8, "알로사우루스");
+		dinosaur[2] = new HerbivorDino("스테고", 15, "스테고사우루스");
+		dinosaur[3] = new AquaDino("모사", 65, "모사사우루스");
+
 		
 		parkstaff[0] = new Security("윤선용", 27, "보안팀", 10);
 		parkstaff[1] = new Security("이스마엘", 30, "보안팀", 5);
@@ -174,37 +172,13 @@ public class Main {
 			}
 		}
 		if(index != -1) {
-			System.out.println("공룡 정보를 등록합니다.");
-			System.out.println("공룡 이름은? ");
-			String name = sc.next();
-			System.out.println("공룡 나이는? ");
-			int age = sc.nextInt();
-			System.out.println("공룡 크기는? ");
-			String size = sc.next();
-			System.out.println("공룡의 종은? ");
-			String species = sc.next();
-			System.out.println("공룡의 식성은? 초식/육식/잡식");
-			String diet = sc.next();
-			System.out.println("공룡 타입은? 지룡/수룡/익룡");
-			String house = sc.next();
-			if(house.equals("지룡")) {
-				System.out.println("꼬리 길이는? ");
-				int tailSize = sc.nextInt();
-				Dinosaur newDino = new LandDino(name, age, size, species, diet, house, tailSize);
-				dinosaur[index] = newDino;
+			System.out.println("공룡을 등록합니다.");
+			System.out.println("공룡의 타입은? 초식공룡/육식공룡/바다공룡");
+			String DinoType = sc.next();
+			if(DinoType.equals("초식공룡")) {
+				
 			}
-			else if(house.equals("수룡")) {
-				System.out.println("지느러미 길이는? ");
-				int finSize = sc.nextInt();
-				Dinosaur newDino = new AquaDino(name, age, size, species, diet, house, finSize);
-				dinosaur[index] = newDino;
-			}
-			else if(house.equals("익룡")) {
-				System.out.println("날개 길이는? ");
-				int wingSize = sc.nextInt();
-				Dinosaur newDino = new FlyDino(name, age, size, species, diet, house, wingSize);
-				dinosaur[index] = newDino;
-			}else {System.out.println("오탈자 주의!");}
+			
 		}
 		System.out.println("공룡 등록 완료");
 }
@@ -221,62 +195,6 @@ public class Main {
 	        }
 	    }
 
-	    if (indexEdit != -1) {
-	        System.out.println("새로운 공룡 정보를 입력하세요: ");
-	        System.out.println("현재 이름: " + dinosaur[indexEdit].getName() + ", 바꿀 이름: ");
-	        String newName = sc.next();
-	        System.out.println("현재 나이: " + dinosaur[indexEdit].getAge() + ", 바꿀 나이: ");
-	        int newAge = sc.nextInt();
-	        System.out.println("현재 크기: " + dinosaur[indexEdit].getSize() + ", 바꿀 크기: ");
-	        String newSize = sc.next();
-	        System.out.println("현재 종족: " + dinosaur[indexEdit].getSpecies() + ", 바꿀 종족: ");
-	        String newSpecies = sc.next();
-	        System.out.println("현재 식성: " + dinosaur[indexEdit].getDiet() + ", 바꿀 식성: ");
-	        String newDiet = sc.next();
-
-	        if (dinosaur[indexEdit] instanceof LandDino) {
-	            LandDino landDino = (LandDino) dinosaur[indexEdit]; // LandDino로 캐스트
-	            System.out.println("꼬리 길이: " + landDino.getTailSize() + ", 새로운 꼬리 길이: ");
-	            int newTailSize = sc.nextInt();
-	            //앞에서 입력한 새로운 정보를 입력
-	            landDino.setName(newName);
-	            landDino.setAge(newAge);
-	            landDino.setSize(newSize);
-	            landDino.setSpecies(newSpecies);
-	            landDino.setDiet(newDiet);
-	            landDino.setTailSize(newTailSize);
-	        }
-	        else if (dinosaur[indexEdit] instanceof FlyDino) {
-	        	FlyDino flydino = (FlyDino) dinosaur[indexEdit]; // FlyDino로 캐스트
-	            System.out.println("날개 길이: " + flydino.getWingSize() + ", 새로운 날개 길이: ");
-	            int newWingSize = sc.nextInt();
-	            //앞에서 입력한 새로운 정보를 입력
-	            flydino.setName(newName);
-	            flydino.setAge(newAge);
-	            flydino.setSize(newSize);
-	            flydino.setSpecies(newSpecies);
-	            flydino.setDiet(newDiet);
-	            flydino.setWingSize(newWingSize);
-	        }
-	        else if (dinosaur[indexEdit] instanceof AquaDino) {
-	        	AquaDino aquadino = (AquaDino) dinosaur[indexEdit]; // AquaDino로 캐스트
-	            System.out.println("지느러미 길이: " + aquadino.getFinSize() + ", 새로운 지느러미 길이: ");
-	            int newFinSize = sc.nextInt();
-	            //앞에서 입력한 새로운 정보를 입력
-	            aquadino.setName(newName);
-	            aquadino.setAge(newAge);
-	            aquadino.setSize(newSize);
-	            aquadino.setSpecies(newSpecies);
-	            aquadino.setDiet(newDiet);
-	            aquadino.setFinSize(newFinSize);
-	        }
-	        else {System.out.println("잘못된 입력입니다.");}
-
-	        System.out.println("공룡 정보 수정 완료.");
-	        
-	    } else {
-	        System.out.println(name + " 라는 공룡은 없습니다.");
-	    }
 	}
 	
 	public void removeDinosaur() {
@@ -411,44 +329,7 @@ public class Main {
 	
 	
 	public void infoDinosaur() {
-		System.out.println("우리 공원의 공룡 목록입니다.");
-		for(Dinosaur dino : dinosaur) {
-			if(dino != null) {
-	            if(dino instanceof LandDino) {
-	            	LandDino landdino = (LandDino) dino;
-					System.out.println("이름: " + dino.getName());
-					System.out.println("나이: " + dino.getAge());
-					System.out.println("크기: " + dino.getSize());
-					System.out.println("종족: " + dino.getSpecies());
-					System.out.println("식성: " + dino.getDiet());
-					System.out.println("타입: " + dino.getHouse());
-	                System.out.println("꼬리 길이: " + landdino.getTailSize());
-	                System.out.println();
-	            }
-	            else if(dino instanceof FlyDino){
-	            	FlyDino flydino = (FlyDino) dino;
-					System.out.println("이름: " + dino.getName());
-					System.out.println("나이: " + dino.getAge());
-					System.out.println("크기: " + dino.getSize());
-					System.out.println("종족: " + dino.getSpecies());
-					System.out.println("식성: " + dino.getDiet());
-					System.out.println("타입: " + dino.getHouse());
-	                System.out.println("날개 길이: " + flydino.getWingSize());
-	                System.out.println();
-	            }
-	            else if(dino instanceof AquaDino){
-	            	AquaDino aquadino = (AquaDino) dino;
-					System.out.println("이름: " + dino.getName());
-					System.out.println("나이: " + dino.getAge());
-					System.out.println("크기: " + dino.getSize());
-					System.out.println("종족: " + dino.getSpecies());
-					System.out.println("식성: " + dino.getDiet());
-					System.out.println("타입: " + dino.getHouse());
-	                System.out.println("지느러미 길이: " + aquadino.getFinSize());
-	                System.out.println();
-	            }
-			}
-		}
+
 	}
 	
 	public void infoStaffs() {
@@ -744,4 +625,5 @@ public class Main {
 	
 
 }
+
 

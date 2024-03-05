@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class Main {
 	boolean keepMenu = true;
 	Scanner sc = new Scanner(System.in);
-	Dinosaur[] dinosaur = new Dinosaur[5];
-	ParkStaff[] parkstaff = new ParkStaff[5];
-	Ticket[] ticket = new Ticket[5];
+	Dinosaur[] dinosaur = new Dinosaur[10];
+	ParkStaff[] parkstaff = new ParkStaff[10];
+	Ticket[] ticket = new Ticket[10];
 	SafeTest safePark = new SafeTest(); //SafeTest라는 클래스를 정의하고 해당 클래스의 객체를 생성하여 safePark라는 변수에 할당.
 	
 	public static void main(String[]args) {
@@ -55,7 +55,6 @@ public class Main {
 		parkstaff[2] = new Veterinarians("파우스트", 29, "수의팀", 7);
 		parkstaff[3] = new Veterinarians("그레고르", 29, "수의팀", 5);
 		parkstaff[4] = new Guide("로쟈", 28, "안내팀", 7);
-		parkstaff[5] = new Guide("싱클레어", 22, "안내팀", 1);
 		
         ticket[0] = new Ticket(20000, "롤랑", 20240223, false);
         ticket[1] = new Ticket(20000, "안젤리카", 20240223, false);
@@ -176,8 +175,39 @@ public class Main {
 			System.out.println("공룡의 타입은? 초식공룡/육식공룡/바다공룡");
 			String DinoType = sc.next();
 			if(DinoType.equals("초식공룡")) {
+				System.out.println("공룡의 이름은? ");
+				String dinoName = sc.next();
+				System.out.println("공룡의 나이는? ");
+				int dinoAge = sc.nextInt();
+				System.out.println("공룡의 종은? ");
+				String dinoSpe = sc.next();
 				
+				HerbivorDino newDino = new HerbivorDino(dinoName, dinoAge, dinoSpe);
+				System.out.println("공룡 등록 완료" + newDino);
 			}
+			else if(DinoType.equals("육식공룡")) {
+				System.out.println("공룡의 이름은? ");
+				String dinoName = sc.next();
+				System.out.println("공룡의 나이는? ");
+				int dinoAge = sc.nextInt();
+				System.out.println("공룡의 종은? ");
+				String dinoSpe = sc.next();
+				
+				CarnivoreDino newDino = new CarnivoreDino(dinoName, dinoAge, dinoSpe);
+				System.out.println("공룡 등록 완료" + newDino);
+			}
+			else if(DinoType.equals("바다공룡")) {
+				System.out.println("공룡의 이름은? ");
+				String dinoName = sc.next();
+				System.out.println("공룡의 나이는? ");
+				int dinoAge = sc.nextInt();
+				System.out.println("공룡의 종은? ");
+				String dinoSpe = sc.next();
+				
+				AquaDino newDino = new AquaDino(dinoName, dinoAge, dinoSpe);
+				System.out.println("공룡 등록 완료" + newDino);
+			}
+			else {System.out.println("잘못된 입력입니다.");}
 			
 		}
 		System.out.println("공룡 등록 완료");
@@ -194,6 +224,7 @@ public class Main {
 	            break;
 	        }
 	    }
+
 
 	}
 	

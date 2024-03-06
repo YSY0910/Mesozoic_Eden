@@ -4,27 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-class Person implements Comparable<Person>{
-	String name;
-	int age;
-	
-	Person(String name, int age){
-		this.name = name;
-		this.age = age;
-	}
-	public String getName() {
-		return this.name;
-	}
-	
-	//@Override 작업을 해줘야 출력시 제대로 된 객체 정보가 보임.
-	@Override public String toString() {
-		return "이름: " + this.name + " " + "나이: " + this.age;
-				} // 이름, 나이를 출력함.
-	@Override public int compareTo(Person other) {
-		return Integer.compare(this.age, other.age);
-	}	// 위에 출력한 정보를 나이가 적은 순서로 다시 배치하여 출력하게 함.
-}
+import java.util.TreeSet;
 
 public class T5 {
 
@@ -32,9 +12,9 @@ public class T5 {
 		//SortTest
 		List<Person> personList = new ArrayList<>();
 		
-		personList.add(new Person("가온", 50));
-		personList.add(new Person("다빈", 40));
-		personList.add(new Person("나린", 60));
+		personList.add(new Person("가온bdwqfbf", 50));
+		personList.add(new Person("다빈eewfg", 40));
+		personList.add(new Person("나린fsdf", 60));
 		
 		for(Person person : personList) {
 			System.out.println(person);
@@ -48,16 +28,35 @@ public class T5 {
 		}
 		
 		System.out.println();
-		
+		/*
 		Comparator<Person> nameCompara = new Comparator<Person>() {
 			@Override public int compare(Person p1, Person p2) {
-				return p1.getName().compareTo(p2.getName());
+				return p1.getName().compareTo(p2.getName()); // 이름의 철자 순서로 정렬. a~z ㄱ~ㅎ
 			}
-		};
-		Collections.sort(personList, nameCompara);
+		};*/
+		
+		Comparator<Person> nameLengthComparator = (p1, p2) ->
+			Integer.compare(p1.getName().length(), p2.getName().length()); //이름의 길이 순서로 정렬
+			
+		Collections.sort(personList, nameLengthComparator);
+		
 		for(Person person : personList) {
 			System.out.println(person);
 		}
+			System.out.println();
+		//TreeSet Test
+		Comparator<Person> nameCompara = (p1, p2) ->
+			p1.getName().compareTo(p2.getName());
+			
+			TreeSet<Person> personTreeSetByName = new TreeSet<>(nameCompara);
+			
+			personTreeSetByName.add(new Person("Hopp", 1));
+			personTreeSetByName.add(new Person("Joep", 4));
+			personTreeSetByName.add(new Person("Anine", 3));
+
+			System.out.println(personTreeSetByName);
+			
 	}
 
+	
 }
